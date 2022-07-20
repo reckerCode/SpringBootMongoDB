@@ -1,4 +1,4 @@
-package io.spring.mongo.MongoIntegration.model;
+package io.spring.mongo.integration.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

@@ -1,0 +1,6 @@
+io/spring/mongo/MongoIntegration/MongoIntegrationApplication.class
+io/spring/mongo/MongoIntegration/repository/ItemRepository.class
+io/spring/mongo/MongoIntegration/model/GroceryItems.class
+io/spring/mongo/MongoIntegration/service/CustomerService.class
+io/spring/mongo/MongoIntegration/model/Customer.class
+io/spring/mongo/MongoIntegration/repository/CustomerRepository.class

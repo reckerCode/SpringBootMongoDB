@@ -1,4 +1,4 @@
-package io.spring.mongo.MongoIntegration;
+package io.spring.mongo.integration;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

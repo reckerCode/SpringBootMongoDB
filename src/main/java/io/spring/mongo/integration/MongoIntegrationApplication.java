@@ -1,7 +1,7 @@
-package io.spring.mongo.MongoIntegration;
+package io.spring.mongo.integration;
 
-import io.spring.mongo.MongoIntegration.model.Customer;
-import io.spring.mongo.MongoIntegration.service.CustomerService;
+import io.spring.mongo.integration.model.Customer;
+import io.spring.mongo.integration.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +15,7 @@ import java.util.List;
 public class MongoIntegrationApplication implements CommandLineRunner {
 
     @Autowired
-    private CustomerService customerService;
+    private CustomerRepository repository;
 
     public static void main(String[] args) {
         SpringApplication.run(MongoIntegrationApplication.class, args);
@@ -23,22 +23,22 @@ public class MongoIntegrationApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        customerService.deleteAllCustomers();
+        repository.deleteAll();
 
         //save a couple of customers
-        customerService.saveCustomer(new Customer("Alice", "Smith"));
-        customerService.saveCustomer(new Customer("Bob", "Smith"));
+        repository.save(new Customer("Alice", "Smith"));
+        repository.save(new Customer("Bob", "Smith"));
 
-        List<Customer> customers = customerService.getAllCustomersByLastName("Smith");
+        List<Customer> customers = repository.findByLastName("Smith");
         //fetching all the customers
         log.info("Customers found with findAllByLastName(): ");
         customers.forEach(customer -> log.info(customer.toString()));
 
         log.info("Customer found with findByFirstname('Alice'): {}",
-                customerService.getCustomerByFirstName("Alice"));
+                repository.findByFirstName("Alice"));
 
         log.info("Customers found with findAll(): ");
-        customerService.findAllCustomers();
+        repository.findAll().forEach(customer -> log.info(customer.toString()));
     }
 
 }
